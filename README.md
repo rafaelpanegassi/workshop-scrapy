@@ -1,3 +1,3 @@
 # workshop-scrapy
 
-scrapy crawl mercadolivre -o ../data/data.jsonl
+scrapy crawl mercadolivre -o ../../data/data.jsonl
