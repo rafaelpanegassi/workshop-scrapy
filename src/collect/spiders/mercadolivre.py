@@ -9,7 +9,7 @@ class MercadolivreSpider(scrapy.Spider):
     max_pages = 20
 
     def parse(self, response):
-        products = response.css('div.poly-card__content')
+        products = response.css('div.poly-card__con.tent')
         
         for product in products:
             
