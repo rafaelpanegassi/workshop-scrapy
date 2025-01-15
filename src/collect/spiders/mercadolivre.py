@@ -9,7 +9,7 @@ class MercadolivreSpider(scrapy.Spider):
     max_pages = 20
 
     def parse(self, response):
-        products = response.css('div.poly-card__con.tent')
+        products = response.css('div.poly-card__content')
         
         for product in products:
             
@@ -18,7 +18,7 @@ class MercadolivreSpider(scrapy.Spider):
 
             yield {
                 'brand': product.css('span.poly-component__brand::text').get(),
-                'name': product.css('h2.poly-box.poly-component__title a::text').get(),
+                'name': product.css('h2.poly-component__title-wrapper a.poly-component__title::text').get(),
                 'old_price_reais': prices[0] if len(prices) > 0 else None,
                 'old_price_centavos': cents[0] if len(cents) > 0 else None,
                 'new_price_reais': prices[1] if len(prices) > 1 else None,
